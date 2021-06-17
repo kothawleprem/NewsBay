@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %} NewsBay - Sports {% endblock title %}
+{% block sports %}active{% endblock sports %}
+
+{% block body %}
+
+
+<style>
+.card{
+    margin-bottom:20px;
+    border-radius: 20px;
+    height: 450px;
+    background-color: #ffffcc;
+    box-shadow: 10px 10px 8px #888888;
+}
+.card:hover{
+    background-color: white;
+    box-shadow: 10px 10px 8px yellow;
+}
+.mybtn{
+    position: absolute;
+    bottom: 0px;
+    margin: 10px;
+}
+img{
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.description{
+    font-family: 'Alegreya', serif;
+}
+.title{
+font-family: 'Playfair Display', serif;
+}
+
+</style>
+<div class="entire">
+
+<div class="container" styl>
+<div class="row">
+{% for data in data_list %}
+{% if forloop.counter0|divisibleby:3 %}
+<div class="col-lg-4 ml-3">
+<div class="card">
+{% for news in data %}
+            <center>
+            {% if '.jpg' in news or '.jpeg' in news or '.png' in news %}
+            <img src="{{news}}" style="width:18rem;height:150px;" alt="...">
+
+            {% endif %}
+            {% if '->' in news %}
+            <h5 class="title"> {{news}}</h5>
+        
+            {% elif 'http' in news%}
+            {% if '.jpg' not in news and '.jpeg' not in news and '.png' not in news%}
+            <a href="{{news}}" class="btn mybtn btn-primary">Go somewhere</a>{% endif %}
+
+            {% else %}
+            <p class="description"> {{news}}</p>
+            {% endif %}
+            </center>
+{% endfor %}
+</div>
+</div>
+
+
+{% elif forloop.counter0|divisibleby:2 %}
+<div class="col-lg-4 ml-3">
+<div class="card">
+{% for news in data %}
+<center>
+            {% if '.jpg' in news or '.jpeg' in news or '.png' in news %}
+            <img src="{{news}}" style="width:18rem;height:150px;" alt="...">
+            {% endif %}
+        
+            {% if '->' in news %}
+            <h5 class="title"> {{news}}</h5>
+        
+            {% elif 'http' in news%}
+           {% if '.jpg' not in news and '.jpeg' not in news and '.png' not in news%}
+            <a href="{{news}}" class="btn mybtn btn-primary">Go somewhere</a>{% endif %}
+            {% else %}
+            <p class="description" >{{news}}</p>
+            {% endif %}
+</center>
+{% endfor %}
+</div>
+</div>
+
+{% elif forloop.counter0|divisibleby:1 %}
+<div class="col-lg-4 ml-3">
+<div class="card">
+{% for news in data %}
+<center>
+
+            {% if '.jpg' in news or '.jpeg' in news or '.png' in news %}
+            <img src="{{news}}" style="width:18rem; height:150px;" alt="...">
+            {% endif %}
+            
+            {% if '->' in news %}
+            <h5 class="title"> {{news}}</h5>
+        
+            {% elif 'http' in news%}
+            {% if '.jpg' not in news and '.jpeg' not in news and '.png' not in news%}
+            
+            <a href="{{news}}" class="btn mybtn btn-primary">Go somewhere</a>{% endif %}
+    
+            {% else %}
+            <p class="description" >{{news}}</p>
+            {% endif %}
+</center>
+{% endfor %}
+</div>
+</div>
+
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock body %}

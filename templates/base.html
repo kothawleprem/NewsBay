@@ -1,0 +1,116 @@
+ {% load static %}
+ {% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/310d21a87c.js" crossorigin="anonymous"></script>
+
+    <title>{% block title %}{% endblock title %}</title>
+    <style>
+    .navbar-brand {
+        font-family: 'Dancing Script', cursive;
+        font-size:35px;
+    }
+    #myVideo {
+  position: fixed;
+  right: 0;
+  top:10;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+nav ul{
+    padding-left: 700px;
+    display: flex;
+    list-style: none;
+}
+nav ul li{
+    margin: 0 5px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 10px;
+    transition: all 0.3s ease;
+}
+nav ul li a:hover{
+    color: black;
+    background: black;
+    border-radius: 5px;
+}
+    </style>
+  </head>
+  <body>
+<video autoplay muted loop id="myVideo">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-bubbles-rising-in-water-178-large.mp4" type="video/mp4">
+</video> 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: yellow;" href="#">NewsBay</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% block general %}{% endblock general %}" aria-current="page" href="/">General</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block business %}{% endblock business %}" aria-current="page" href="/business">Business</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block sports %}{% endblock sports %}" aria-current="page" href="/sports">Sports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block entertainment %}{% endblock entertainment %}" aria-current="page" href="/entertainment">Entertainment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block health %}{% endblock health %}" aria-current="page" href="/health">Health</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block science %}{% endblock science %}" aria-current="page" href="/science">Science</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block technology %}{% endblock technology %}" aria-current="page" href="/technology">Technology</a>
+          </li>  
+        </ul>
+<i class="fas fa-map-marker-alt" style="color:cyan;font-size: 20px;"> {{country}}</i>
+          <form class="d-flex" method="GET" style="margin:10px;">
+                    <input class="form-control me-2" type="text" id="country" value="{{ request.GET.country }}" placeholder="Country"
+                        placeholder="Enter Country" name="country">
+                    <input type="submit" value="Update" class="btn btn-outline-success" />
+           </form>
+    </div>
+  </div>
+</nav>
+<br>
+
+    {% block body %}
+
+    {% endblock body %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+  </body>
+</html>
